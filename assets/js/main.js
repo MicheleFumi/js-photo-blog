@@ -33,8 +33,10 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         let {title, url} = card
         
         const markup =`
-          <div class="col-4">
+          <div class="col-4 col-md-6 col-sm-12">
+                    
                     <div class="card">
+                    <img src="./assets/img/pin.svg" class="pin">
                         <img src=${url} class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">${title}</p>
