@@ -56,10 +56,9 @@ main{
 
 .card:hover{
     rotate: -30deg;
-    scale: 1.15;
+    scale: 1.5;
     padding: 1rem;
-    position: relative;
-    overflow: visible;
+    z-index: 1000;
     
    
 }
