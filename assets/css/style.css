@@ -17,11 +17,17 @@ main{
     padding-top: 4rem;
     background-image: url("../img/cork.png");
     
+
+    .container{
+        width:70%;
+    }
 }
+
+
 
 .card{
     border-radius: 0;
-   
+   padding: 1rem;
     .card-img-top{
        border-radius: 0;
         
