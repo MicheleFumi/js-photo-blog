@@ -15,9 +15,37 @@ rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano
  */
 
 
-let cardEl = document.querySelector(".card")
+let cardEl = document.getElementById("card-wrap")
 
 console.log(cardEl);
 
 
-axios.get("")
+axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
+
+.then(response => {
+    //recupero l'array di oggetti che hanno le info delle card
+    const cards = response.data
+    console.log(cards);
+
+    let cardElement = ''
+    // creo un ciclo dove per ogni 
+    cards.forEach(card => {
+        let {title, url} = card
+        
+        const markup =`
+          <div class="col-4">
+                    <div class="card">
+                        <img src=${url} class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">${title}</p>
+                        </div>
+                    </div>
+                </div>
+        `
+        cardElement += markup
+    });
+
+    cardEl.innerHTML= cardElement
+
+  })
+  .catch(err => console.error(err));
