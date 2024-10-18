@@ -28,6 +28,7 @@ main{
 .card{
     border-radius: 0;
    padding: 1rem;
+   margin-bottom: 1rem;
     .card-img-top{
        border-radius: 0;
         
