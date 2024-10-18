@@ -26,12 +26,14 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
     //recupero l'array di oggetti che hanno le info delle card
     const cards = response.data
     console.log(cards);
-
+// creo la variabile di appoggio dove salverò il markup responsive sottoforma di stringa
     let cardElement = ''
-    // creo un ciclo dove per ogni 
+
+    
+    // creo un ciclo dove per ogni titolo e url creo una card
     cards.forEach(card => {
         let {title, url} = card
-        
+       //creo la variabile con markup responsive
         const markup =`
           <div class="col-sm-12 col-md-6 col-lg-4 ">
                    
@@ -44,9 +46,10 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
                     </div>
                 </div>
         `
+        // inserisco le 6 card nella variabile cardElement
         cardElement += markup
     });
-
+    // stampo la variabile con le card responsive
     cardEl.innerHTML= cardElement
 
   })
