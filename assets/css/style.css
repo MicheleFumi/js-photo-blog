@@ -31,17 +31,20 @@ main{
   margin-left: auto;
   margin-right: auto;
   margin-top: -15px;
-  position: relative;
+  
+  
   
 }
 
 .card{
     border-radius: 0;
-   padding: 0rem 1rem;
+   padding: 0% 1rem;
    margin-bottom: 2rem;
+   
    
     .card-img-top{
        border-radius: 0;
+       
     }
     
 }
@@ -52,11 +55,15 @@ main{
 
 
 .card:hover{
-    
     rotate: -30deg;
-    scale: 1.25;
+    scale: 1.15;
+    padding: 1rem;
+    position: relative;
+    overflow: visible;
+    
+   
 }
 
-.pin:hover{
-    display: hidden;
+ .card:hover .pin{
+    display: none;
 }
