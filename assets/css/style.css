@@ -7,11 +7,14 @@ header{
     background-image: url("../img/wall.png");
    .title-font{
     font-family: "Edu TAS Beginner", cursive;
-  ;
+  
+    }
+
 }
 
-   }
-
+h1{
+    font-size: 5rem;
+}
 
 main{
     padding-top: 4rem;
@@ -31,9 +34,10 @@ main{
    margin-bottom: 1rem;
     .card-img-top{
        border-radius: 0;
-        
-        
-       
-        
     }
+    
+}
+.card-text{
+    font-family: "Edu TAS Beginner", cursive;
+    font-size: larger;
 }
