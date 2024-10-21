@@ -60,7 +60,14 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         // creo un ciclo dove per ogni titolo e url creo una card
         cards.forEach(card => {
             let { title, url, id } = card
-
+            let textArray = title.split(" ")
+            console.log(textArray);
+         for (let i = 0; i < textArray.length; i++) {
+            const word = textArray[i];
+            console.log(word);
+            
+         }
+            
             //creo la variabile con markup responsive
             const markup = `
           <div class="col-sm-12 col-md-6 col-lg-4 ">
