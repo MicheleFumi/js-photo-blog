@@ -36,7 +36,7 @@ Spostandosi col mouse sopra le foto, queste si zoommano, ruotano di 10 gradi e l
 
 // creo le variabili delle card, overlay e bottone dell'overlay
 let cardEl = document.getElementById("card-wrap")
-let overlayEl =document.querySelector(".overlay")
+let overlayEl = document.querySelector(".overlay")
 let buttonEl = document.getElementById('button')
 
 console.log(overlayEl);
@@ -46,21 +46,21 @@ console.log(cardEl);
 
 axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
 
-.then(response => {
-    //recupero l'array di oggetti che hanno le info delle card
-    const cards = response.data
-    console.log(cards);
-// creo la variabile di appoggio dove salverò il markup responsive sottoforma di stringa
-    let cardElement = ''
-    
-    
-    
-    // creo un ciclo dove per ogni titolo e url creo una card
-    cards.forEach(card => {
-        let {title, url ,id} = card
-       
-       //creo la variabile con markup responsive
-        const markup =`
+    .then(response => {
+        //recupero l'array di oggetti che hanno le info delle card
+        const cards = response.data
+        console.log(cards);
+        // creo la variabile di appoggio dove salverò il markup responsive sottoforma di stringa
+        let cardElement = ''
+
+
+
+        // creo un ciclo dove per ogni titolo e url creo una card
+        cards.forEach(card => {
+            let { title, url, id } = card
+
+            //creo la variabile con markup responsive
+            const markup = `
           <div class="col-sm-12 col-md-6 col-lg-4 ">
                    
                     <div class="card">
@@ -72,34 +72,43 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
                     </div>
                 </div>
         `
-        
+            cardElement += markup
+
+
+        });
+        // stampo la variabile con le card responsive
+
         // inserisco le 6 card nella variabile cardElement
-        cardElement += markup
-        cardEl.innerHTML= cardElement
-        console.log(markup);
-        
-        
-       let cardImgEl = document.getElementById(`card-img-${id}`)
-       console.log(cardImgEl);
-       
-        // aggiungo gli event listener per l'overlay
-        cardImgEl.addEventListener('click', ()=>{
-            overlayEl.classList.remove("d-none")
-            
-         }) 
-         overlayEl.addEventListener('click', ()=>{
-            overlayEl.classList.add("d-none")
-         })
-         buttonEl.addEventListener('click', ()=>{
-            overlayEl.classList.add("d-none")
-         }) 
-    });
-    // stampo la variabile con le card responsive
-   
 
-   
+        cardEl.innerHTML = cardElement
 
-  })
-  .catch(err => console.error(err));
 
- 
+
+        cards.forEach(card => {       
+            let { url, id } = card
+           
+
+             let cardImgEl = document.getElementById(`card-img-${id}`)
+            console.log(cardImgEl);
+
+            // aggiungo gli event listener per l'overlay
+            cardImgEl.addEventListener('click', () => {
+                overlayEl.classList.remove("d-none")
+                overlayEl.innerHTML = ` <img id="card-img-${id}" src=${url} class="overlay-img" alt="...">`
+                
+            })
+            overlayEl.addEventListener('click', () => {
+                overlayEl.classList.add("d-none")
+            })
+            buttonEl.addEventListener('click', () => {
+                overlayEl.classList.add("d-none")
+            }) 
+        })
+
+
+
+
+
+    })
+    .catch(err => console.error(err));
+
