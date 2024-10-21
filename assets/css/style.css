@@ -1,10 +1,23 @@
 *{
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
+    
+}
+
+
+.overlay{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.805);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999 ;
 }
 
 header{
-    background-image: url("../img/wall.png");
+  background-image: url("../img/wall.png"); 
    .title-font{
     font-family: "Edu TAS Beginner", cursive;
   
@@ -16,9 +29,11 @@ h1{
     font-size: 5rem;
 }
 
+
+
 main{
     padding-top: 4rem;
-    background-image: url("../img/cork.png");
+   background-image: url("../img/cork.png");
     
 
     .container{
@@ -58,7 +73,8 @@ main{
     rotate: -30deg;
     scale: 1.25;
     padding: 1rem;
-    z-index: 1000;
+    z-index: 1;
+  
     
    
 }
