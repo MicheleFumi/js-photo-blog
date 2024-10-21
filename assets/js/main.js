@@ -131,6 +131,7 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
             // aggiungo gli event listener per l'overlay
             cardImgEl.addEventListener('click', () => {
                 overlayEl.classList.remove("d-none")
+                
                 //stampo le foto in base all'id 
                 overContainerEl.innerHTML = ` <img id="card-img-${id}" src=${url} class="overlay-img" alt="...">`
 
