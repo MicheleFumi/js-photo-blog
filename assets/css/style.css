@@ -56,7 +56,7 @@ main{
 
 .card:hover{
     rotate: -30deg;
-    scale: 1.5;
+    scale: 1.25;
     padding: 1rem;
     z-index: 1000;
     
