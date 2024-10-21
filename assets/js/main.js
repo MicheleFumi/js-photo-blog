@@ -34,10 +34,10 @@ Spostandosi col mouse sopra le foto, queste si zoommano, ruotano di 10 gradi e l
 
  */
 
-
+// creo le variabili delle card, overlay e bottone dell'overlay
 let cardEl = document.getElementById("card-wrap")
 let overlayEl =document.querySelector(".overlay")
-
+let buttonEl = document.getElementById('button')
 
 console.log(overlayEl);
 
@@ -57,14 +57,14 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
     
     // creo un ciclo dove per ogni titolo e url creo una card
     cards.forEach(card => {
-        let {title, url} = card
+        let {title, url ,id} = card
        //creo la variabile con markup responsive
         const markup =`
           <div class="col-sm-12 col-md-6 col-lg-4 ">
                    
                     <div class="card">
                      <img src="./assets/img/pin.svg" class="pin">
-                        <img id="card-img" src=${url} class="card-img-top" alt="...">
+                        <img id="card-img-${id}" src=${url} class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">${title}</p>
                         </div>
@@ -74,16 +74,23 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         // inserisco le 6 card nella variabile cardElement
         cardElement += markup
         cardEl.innerHTML= cardElement
-    
-       let cardImgEl = document.getElementById('card-img')
+        console.log(markup);
+        
+        
+       let cardImgEl = document.getElementById('card-img-${id}')
        console.log(cardImgEl);
        
-        
+        // aggiungo gli event listener per l'overlay
         cardImgEl.addEventListener('click', ()=>{
             overlayEl.classList.remove("d-none")
             
          }) 
-    
+         overlayEl.addEventListener('click', ()=>{
+            overlayEl.classList.add("d-none")
+         })
+         buttonEl.addEventListener('click', ()=>{
+            overlayEl.classList.add("d-none")
+         }) 
     });
     // stampo la variabile con le card responsive
    
