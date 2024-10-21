@@ -54,29 +54,37 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         console.log(cards);
         // creo la variabile di appoggio dove salverò il markup responsive sottoforma di stringa
         let cardElement = ''
-
+        
 
 
         // creo un ciclo dove per ogni titolo e url creo una card
         cards.forEach(card => {
+
             let { title, url, id } = card
+
             let textArray = title.split(" ")
             console.log(textArray);
-            let capitolizeWord = 
+
+           let capitolizeSentence = []
+
          textArray.forEach(word => {
            let initial = word.charAt(0)
             console.log(initial);
-            let capitolize = initial.toUpperCase()
-            console.log(capitolize);
+
+            let capitolizeInit = initial.toUpperCase()
+            console.log(capitolizeInit);
+
             let lowerLetter = word.slice(1)
             console.log(lowerLetter);
-            let capitolizeArray = capitolize+lowerLetter
-            console.log(capitolizeArray);
-            let capitolizeWord = capitolizeArray.toString()
+
+            let capitolizeWord = capitolizeInit+lowerLetter
             console.log(capitolizeWord);
+
+            capitolizeSentence.push(capitolizeWord)
             
-         });
-            
+        });
+        capitolizeSentence.join(" ")
+        console.log(capitolizeSentence);
             //creo la variabile con markup responsive
             const markup = `
           <div class="col-sm-12 col-md-6 col-lg-4 ">
@@ -85,7 +93,7 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
                      <img src="./assets/img/pin.svg" class="pin">
                         <img id="card-img-${id}" src=${url} class="card-img-top" alt="...">
                         <div class="card-body px-0 py-2 ">
-                            <p class="card-text">${title}</p>
+                            <p class="card-text">${capitolizeSentence}</p>
                         </div>
                     </div>
                 </div>
