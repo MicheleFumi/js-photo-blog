@@ -34,11 +34,11 @@ Spostandosi col mouse sopra le foto, queste si zoommano, ruotano di 10 gradi e l
 
  */
 
-// creo le variabili delle card, overlay e bottone dell'overlay
+// creo le variabili delle card, overlay e bottone dell'overlay e del container dove andrà la foto
 let cardEl = document.getElementById("card-wrap")
 let overlayEl = document.querySelector(".overlay")
 let buttonEl = document.getElementById('button')
-overContainerEl =document.querySelector(".container")
+let overContainerEl = document.querySelector(".container")
 
 console.log(overlayEl);
 console.log(overContainerEl);
@@ -54,37 +54,41 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         console.log(cards);
         // creo la variabile di appoggio dove salverò il markup responsive sottoforma di stringa
         let cardElement = ''
-        
+
 
 
         // creo un ciclo dove per ogni titolo e url creo una card
         cards.forEach(card => {
-
+            // recupero le chiavi che mi serve per creare le card e iterarci
             let { title, url, id } = card
-
+            //scompongo in un array le singole parole
             let textArray = title.split(" ")
             console.log(textArray);
+            // mi creo la variabile dove andranno le parole capitolizzate
+            let capitolizeSentence = []
+            // ciclo nell'array e prendo la iniziale di ogni parola
+            textArray.forEach(word => {
+                let initial = word.charAt(0)
+                console.log(initial);
+                // metto in maiuscolo la iniziale
+                let capitolizeInit = initial.toUpperCase()
+                console.log(capitolizeInit);
+                // prendo la restante parte della parola in minuscolo eliminando la prima
+                let lowerLetter = word.slice(1)
+                console.log(lowerLetter);
+                // unisco le due parti e poi pusho la parola nell'array
+                let capitolizeWord = capitolizeInit + lowerLetter
+                console.log(capitolizeWord);
 
-           let capitolizeSentence = []
+                capitolizeSentence.push(capitolizeWord)
 
-         textArray.forEach(word => {
-           let initial = word.charAt(0)
-            console.log(initial);
+            });
 
-            let capitolizeInit = initial.toUpperCase()
-            console.log(capitolizeInit);
+            //trasformo l'array di parole in una stringa
+            capitolizeSentence.join(" ")
+            console.log(capitolizeSentence);
 
-            let lowerLetter = word.slice(1)
-            console.log(lowerLetter);
 
-            let capitolizeWord = capitolizeInit+lowerLetter
-            console.log(capitolizeWord);
-
-            capitolizeSentence.push(capitolizeWord)
-            
-        });
-        capitolizeSentence.join(" ")
-        console.log(capitolizeSentence);
             //creo la variabile con markup responsive
             const markup = `
           <div class="col-sm-12 col-md-6 col-lg-4 ">
@@ -109,12 +113,12 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         cardEl.innerHTML = cardElement
 
 
-
-        cards.forEach(card => {       
+        // creo un ciclo dove prendo la foto e l'id
+        cards.forEach(card => {
             let { url, id } = card
-           
 
-             let cardImgEl = document.getElementById(`card-img-${id}`)
+            //iterando seleziono tutte le immagini con l'id da 1 a 6
+            let cardImgEl = document.getElementById(`card-img-${id}`)
             console.log(cardImgEl);
 
             // aggiungo gli event listener per l'overlay
@@ -122,14 +126,15 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
                 overlayEl.classList.remove("d-none")
                 //stampo le foto in base all'id 
                 overContainerEl.innerHTML = ` <img id="card-img-${id}" src=${url} class="overlay-img" alt="...">`
-                
+
             })
+            // creo i due event listener per far scomparire l'overlay
             overlayEl.addEventListener('click', () => {
                 overlayEl.classList.add("d-none")
             })
             buttonEl.addEventListener('click', () => {
                 overlayEl.classList.add("d-none")
-            }) 
+            })
         })
 
 
