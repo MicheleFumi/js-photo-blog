@@ -62,11 +62,20 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
             let { title, url, id } = card
             let textArray = title.split(" ")
             console.log(textArray);
-         for (let i = 0; i < textArray.length; i++) {
-            const word = textArray[i];
-            console.log(word);
+            let capitolizeWord = 
+         textArray.forEach(word => {
+           let initial = word.charAt(0)
+            console.log(initial);
+            let capitolize = initial.toUpperCase()
+            console.log(capitolize);
+            let lowerLetter = word.slice(1)
+            console.log(lowerLetter);
+            let capitolizeArray = capitolize+lowerLetter
+            console.log(capitolizeArray);
+            let capitolizeWord = capitolizeArray.toString()
+            console.log(capitolizeWord);
             
-         }
+         });
             
             //creo la variabile con markup responsive
             const markup = `
