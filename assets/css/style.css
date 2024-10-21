@@ -46,6 +46,7 @@ h1 {
 main {
     padding-top: 4rem;
     background-image: url("../img/cork.png");
+    
 
 
     .container {
@@ -87,7 +88,7 @@ main {
 
 
 .card:hover {
-    rotate: -30deg;
+    rotate: -10deg;
     scale: 1.25;
     padding: 1rem;
     z-index: 1;
