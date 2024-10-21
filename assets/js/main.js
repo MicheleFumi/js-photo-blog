@@ -38,8 +38,10 @@ Spostandosi col mouse sopra le foto, queste si zoommano, ruotano di 10 gradi e l
 let cardEl = document.getElementById("card-wrap")
 let overlayEl = document.querySelector(".overlay")
 let buttonEl = document.getElementById('button')
+overContainerEl =document.querySelector(".container")
 
 console.log(overlayEl);
+console.log(overContainerEl);
 
 console.log(cardEl);
 
@@ -94,7 +96,8 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
             // aggiungo gli event listener per l'overlay
             cardImgEl.addEventListener('click', () => {
                 overlayEl.classList.remove("d-none")
-                overlayEl.innerHTML = ` <img id="card-img-${id}" src=${url} class="overlay-img" alt="...">`
+                //stampo le foto in base all'id 
+                overContainerEl.innerHTML = ` <img id="card-img-${id}" src=${url} class="overlay-img" alt="...">`
                 
             })
             overlayEl.addEventListener('click', () => {
