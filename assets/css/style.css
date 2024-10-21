@@ -45,6 +45,7 @@ h1 {
 
 main {
     padding-top: 4rem;
+    padding-bottom:7rem ;
     background-image: url("../img/cork.png");
     
 
@@ -79,11 +80,11 @@ main {
 
 .card-text {
     font-family: "Edu TAS Beginner", cursive;
-    font-size: larger;
+    font-size: large;
 }
 
 .card-body {
-    height: 5rem;
+    height: 6rem;
 }
 
 
@@ -94,6 +95,7 @@ main {
     z-index: 1;
     cursor: pointer;
     box-shadow: 2px 5px 20px 0px black;
+  
 
 
 

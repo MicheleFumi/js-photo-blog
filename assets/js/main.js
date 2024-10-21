@@ -59,23 +59,30 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
 
         // creo un ciclo dove per ogni titolo e url creo una card
         cards.forEach(card => {
+
             // recupero le chiavi che mi serve per creare le card e iterarci
             let { title, url, id } = card
+
             //scompongo in un array le singole parole
             let textArray = title.split(" ")
             console.log(textArray);
+
             // mi creo la variabile dove andranno le parole capitolizzate
             let capitolizeSentence = []
+
             // ciclo nell'array e prendo la iniziale di ogni parola
             textArray.forEach(word => {
                 let initial = word.charAt(0)
                 console.log(initial);
+
                 // metto in maiuscolo la iniziale
                 let capitolizeInit = initial.toUpperCase()
                 console.log(capitolizeInit);
+
                 // prendo la restante parte della parola in minuscolo eliminando la prima
                 let lowerLetter = word.slice(1)
                 console.log(lowerLetter);
+                
                 // unisco le due parti e poi pusho la parola nell'array
                 let capitolizeWord = capitolizeInit + lowerLetter
                 console.log(capitolizeWord);
@@ -85,8 +92,8 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
             });
 
             //trasformo l'array di parole in una stringa
-            capitolizeSentence.join(" ")
-            console.log(capitolizeSentence);
+            let stringSentence = capitolizeSentence.join(' ')
+            console.log(stringSentence);
 
 
             //creo la variabile con markup responsive
@@ -96,8 +103,8 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
                     <div class="card">
                      <img src="./assets/img/pin.svg" class="pin">
                         <img id="card-img-${id}" src=${url} class="card-img-top" alt="...">
-                        <div class="card-body px-0 py-2 ">
-                            <p class="card-text">${capitolizeSentence}</p>
+                        <div class="card-body px-0 py-3 ">
+                            <p class="card-text">${stringSentence}</p>
                         </div>
                     </div>
                 </div>
